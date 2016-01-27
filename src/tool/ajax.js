@@ -21,7 +21,11 @@ module.exports = function(options, callback) {
     if ((xhr.status >= 200 && xhr.status < 300) || (global.XDomainRequest && !xhr.status)) {
       callback(null, JSON.parse(xhr.responseText));
     } else {
-      callback(JSON.parse(xhr.responseText));
+      if (typeof xhr.responseText === 'string') {
+        callback({"error": xhr.responseText});
+      } else {
+        callback(JSON.parse(xhr.responseText));
+      }
     }
   };
 

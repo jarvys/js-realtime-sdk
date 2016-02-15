@@ -1312,7 +1312,6 @@ module.exports = function (options, callback) {
   }
   var url = options.url;
   var method = options.method || 'get';
-  var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
   var xhr = new XMLHttpRequest();
 
   // 浏览器兼容，IE8+
@@ -1350,7 +1349,7 @@ module.exports = function (options, callback) {
 };
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"xmlhttprequest":8}],4:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 'use strict';
 
 module.exports = function () {
@@ -1696,8 +1695,5 @@ function ws(uri, protocols, opts) {
 }
 
 if (WebSocket) ws.prototype = WebSocket.prototype;
-
-},{}],8:[function(require,module,exports){
-exports.XMLHttpRequest = window.XMLHttpRequest || window.XDomainRequest;
 
 },{}]},{},[1]);

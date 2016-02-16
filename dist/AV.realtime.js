@@ -385,6 +385,27 @@ var newRealtimeObject = function newRealtimeObject() {
       this.cache.ec.off(eventName, callback);
       return this;
     },
+    rooms: function rooms(roomIds, callback) {
+      var cache = this.cache;
+      if (!cache.openFlag) {
+        throw new Error('Must call after open() has successed.');
+      }
+
+      this.query({
+        where: {
+          objectId: {
+            $in: roomIds
+          }
+        }
+      }, function (convs) {
+        convs = convs.map(function (conv) {
+          return Object.assign(conv, {
+            id: conv.objectId
+          });
+        });
+        callback && callback(convs);
+      });
+    },
     room: function room(argument, callback) {
       var cache = this.cache;
       if (!cache.openFlag) {

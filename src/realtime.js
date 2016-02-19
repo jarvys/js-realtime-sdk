@@ -775,7 +775,7 @@ engine.getServer = function(cache, options, callback) {
       cache.server = data;
       callback(data);
     } else {
-      cache.ec.emit(eNameIndex.error);
+      cache.ec.emit(eNameIndex.reuse);
     }
   });
 };

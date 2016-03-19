@@ -386,7 +386,8 @@ var newRealtimeObject = function() {
           objectId: {
             $in: roomIds
           }
-        }
+        },
+        limit: 999
       }, function(convs) {
         convs = convs.map(conv => {
           return Object.assign(conv, {

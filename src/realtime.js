@@ -926,11 +926,11 @@ engine.convQuery = function(cache, options) {
   // 默认为包含自己的查询 {"m": peerId}
   // where.m = where.m || cache.options.peerId;
   // 同时查找含有数组中 id 的用户所在的 conversation
-  // if (typeof where.m !== 'string') {
-  //   where.m = {
-  //     $all: where.m
-  //   };
-  // }
+  if (where.m && typeof where.m !== 'string') {
+    where.m = {
+      $all: where.m
+    };
+  }
   engine.wsSend(cache, {
     cmd: 'conv',
     op: 'query',
